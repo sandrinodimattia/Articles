@@ -20,15 +20,15 @@ namespace UniversalProvidersWebRole.Security
         {
             SetConnectionStringsReadOnly(false);
 
-            ConnectionStringSettings connectionStringSettings = ConfigurationManager.ConnectionStrings["name"];
-            if (connectionStringSettings != null)
+            lock (connectionStringLock)
             {
-                connectionStringSettings.ConnectionString = connectionString;
-                connectionStringSettings.ProviderName = providerName;
-            }
-            else
-            {
-                lock (connectionStringLock)
+                ConnectionStringSettings connectionStringSettings = ConfigurationManager.ConnectionStrings["name"];
+                if (connectionStringSettings != null)
+                {
+                    connectionStringSettings.ConnectionString = connectionString;
+                    connectionStringSettings.ProviderName = providerName;
+                }
+                else
                 {
                     ConfigurationManager.ConnectionStrings.Add(new ConnectionStringSettings(name, connectionString, providerName));
                 }
