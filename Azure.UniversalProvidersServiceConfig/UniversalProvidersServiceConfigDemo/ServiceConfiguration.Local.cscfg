@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ServiceConfiguration serviceName="UniversalProvidersServiceConfigDemo" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="1" osVersion="*" schemaVersion="2012-05.1.7">
+  <Role name="UniversalProvidersWebRole">
+    <Instances count="1" />
+    <ConfigurationSettings>
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
+      <Setting name="UserDbConnectionString" value="Data Source=(LocalDb)\v11.0;Initial Catalog=aspnet-UniversalProvidersWebRole-20120901001232;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\aspnet-UniversalProvidersWebRole-20120901001232.mdf" />
+      <Setting name="UserDbConnectionStringProviderName" value="System.Data.SqlClient" />
+    </ConfigurationSettings>
+  </Role>
+</ServiceConfiguration>
